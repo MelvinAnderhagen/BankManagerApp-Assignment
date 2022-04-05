@@ -1,0 +1,55 @@
+﻿@page
+@model BankStartWeb.Pages.Bank.CustomersModel
+@{
+}
+
+<form method="get">
+    <input placeholder="Search" asp-for="@Model.SearchString" />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="id"><i class='bx bx-sort-down'></i></a>
+        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="id"><i class='bx bx-sort-up'></i></a>    
+        </th>
+        <th>Givenname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="givenname"><i class='bx bx-sort-down'></i></a>
+        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="givenname"><i class='bx bx-sort-up'></i></a>    
+        </th>
+        <th>Surname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="surname"><i class='bx bx-sort-down'></i></a>
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="surname"><i class='bx bx-sort-up'></i></a>
+            </th>
+        <th>Street<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="street"><i class='bx bx-sort-down' ></i></a>
+        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="street"><i class='bx bx-sort-up' ></i></a>    
+        </th>
+        <th>City
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="city"><i class='bx bx-sort-down'></i></a>
+             <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="city"><i class='bx bx-sort-up'></i></a>
+            </th>
+        <th></th>
+    </tr>
+    </thead>
+    @foreach (var customer in @Model.customers)
+    {
+        <tr>
+            <td><a asp-page="/Bank/Customer" asp-route-customerId="@customer.Id">@customer.Id</a></td>
+            <td>@customer.Givenname</td>
+            <td>@customer.Surname</td>
+            <td>@customer.Streetaddress</td>
+            <td>@customer.City</td>
+            <td><a asp-page="/EditCustomer" asp-route-customerId="@customer.Id">Edit</a></td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+            @if (@Model.PageNo > 1)
+            {
+                <a asp-page="/Bank/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-search="@Model.SearchString" asp-route-pageno="@(Model.PageNo-1)">Prev</a>
+            }
+        </td>
+        <td></td>
+        <td><a asp-page="/Bank/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-searchString="@Model.SearchString" asp-route-pageno="@(Model.PageNo+1)">Next</a></td>
+    </tr>
+</table>

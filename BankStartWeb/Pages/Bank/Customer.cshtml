@@ -1,0 +1,20 @@
+﻿@page
+@model BankStartWeb.Pages.Bank.CustomerModel
+@{
+}
+
+<h2>@Model.Givenname @Model.Surname</h2>
+
+<h3>City: @Model.City</h3>
+<h3>Street: @Model.Streetaddress</h3>
+<h3>Zipcode: @Model.Zipcode</h3>
+<h3>Country: @Model.Country</h3>
+<h3>Country code: @Model.CountryCode</h3>
+<h3>National id: @Model.NationalId</h3>
+<h3>Telephone: @Model.TelephoneCountryCode @Model.Telephone</h3>
+<h3>Email: @Model.EmailAddress</h3>
+<h3>Birthday: @Model.Birthday</h3>
+
+<a asp-page="/Bank/Customers">Go Back</a>
+<a asp-route-customerId="@Model.Id" asp-page="/Bank/Account">@Model.Givenname @Model.Surname's Accounts</a>
+

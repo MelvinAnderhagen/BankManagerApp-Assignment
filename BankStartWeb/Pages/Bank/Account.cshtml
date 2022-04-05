@@ -1,0 +1,28 @@
+﻿@page
+@model BankStartWeb.Pages.Bank.AccountModel
+@{
+}
+
+<h1>@Model.Givenname @Model.Surname's account details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Account type</th>
+        <th>Account balance</th>
+        <th>Account created</th>
+        <th></th>
+        </tr>
+    </thead>
+@foreach (var account in @Model.ListOfAccounts)
+{
+    <tr>
+        <td>Account Type: @account.AccountType</td>
+        <td>Balance: @account.Balance</td>
+        <td>Created: @account.Created</td>   
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions">Transactions</a></td>
+    </tr>
+}
+
+</table>
+<a asp-route-customerId="@Model.CustomerId" asp-page="/Bank/Customer">Go Back</a>
