@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\CRUD\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

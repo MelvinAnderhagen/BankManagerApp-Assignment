@@ -28,7 +28,7 @@ namespace BankStartWeb.Pages.Bank
         public int AccountId { get; set; }
         public List<Account> Accounts { get; set; }
        
-        public void OnGet(int customerId)
+        public void OnGet(int customerId = 1)
         {
             var customer = _context.Customers.FirstOrDefault(x => x.Id == customerId);
 
