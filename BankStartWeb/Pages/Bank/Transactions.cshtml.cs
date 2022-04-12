@@ -34,6 +34,8 @@ namespace BankStartWeb.Pages.Bank
                 .Include(n => n.Transactions)
                 .First(n => n.Id == accountId);
 
+            
+
             //Givenname = transaction.Givenname;
             //Surname = transaction.Surname;
             //CustomerId = transaction.Id;
