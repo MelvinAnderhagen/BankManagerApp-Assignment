@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace BankStartWeb.Pages.Bank
+namespace BankStartWeb.Pages.Bank.Transactions
 {
     public class TransactionsModel : PageModel
     {
@@ -28,17 +28,13 @@ namespace BankStartWeb.Pages.Bank
             public decimal Amount { get; set; }
             public decimal NewBalance { get; set; }
         }
-        public void OnGet(int accountId)
+        public void OnGet(int accountId, int customerId)
         {
             var transaction = _context.Accounts
                 .Include(n => n.Transactions)
                 .First(n => n.Id == accountId);
 
-            
-
-            //Givenname = transaction.Givenname;
-            //Surname = transaction.Surname;
-            //CustomerId = transaction.Id;
+            var customerid = _context.Customers.FirstOrDefault(e => e.Id == CustomerId);
 
             Transactions = transaction.Transactions.Select(n => new TransactionsViewModel
             {

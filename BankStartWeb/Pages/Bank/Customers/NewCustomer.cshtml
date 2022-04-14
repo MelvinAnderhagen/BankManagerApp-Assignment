@@ -1,0 +1,90 @@
+﻿@page
+@model BankStartWeb.Pages.Bank.Customers.NewCustomerModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1>New Customer Form</h1>
+        <form method="post">
+
+        <div class="form-group">
+            <label asp-for="Givenname">Firstname</label>
+            <input class="form-control" asp-for="Givenname"/>
+            <span asp-validation-for="Givenname" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Surname">Surname
+            </label>
+            <input class="form-control" asp-for="Surname"/>
+            <span asp-validation-for="Surname" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Streetaddress">Street address</label>
+            <input class="form-control" asp-for="Streetaddress"/>
+            <span asp-validation-for="Streetaddress" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City">City</label>
+            <input class="form-control" asp-for="City"/>
+            <span asp-validation-for="City" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Zipcode">Zip code</label>
+            <input class="form-control" asp-for="Zipcode"/>
+            <span asp-validation-for="Zipcode" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Country">Country</label>
+            <input class="form-control" asp-for="Country">
+            <span asp-validation-for="Country" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CountryCode">Country code</label>
+            <input class="form-control" asp-for="CountryCode" placeholder="ex. SE">
+            <span asp-validation-for="CountryCode" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NationalId">NationalId</label>
+            <input class="form-control" asp-for="NationalId" placeholder="ex. 19591113-1111">
+            <span asp-validation-for="NationalId" class="field-validation-error"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="EmailAddress">Email</label>
+            <input class="form-control" asp-for="EmailAddress" placeholder="ex. igor@example.com"/>
+            <span asp-validation-for="EmailAddress" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="BirthDay">Birthday</label>
+            <input type="datetime" class="form-control" asp-for="BirthDay"/>
+            <span asp-validation-for="BirthDay" class="field-validation-error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Telephone">Phone number</label>
+            <input class="form-control" asp-for="Telephone"/>
+            <span asp-validation-for="Telephone" class="field-validation-error"></span>
+        </div>
+
+         <div class="form-group">
+            <label asp-for="TelephoneConutryCode">Telephone Country Code</label>
+            <input class="form-control" asp-for="TelephoneConutryCode" placeholder="ex. +46"/>
+            <span asp-validation-for="TelephoneConutryCode" class="field-validation-error"></span>
+        </div>
+
+        <br />
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+
+    </div>
+</div>

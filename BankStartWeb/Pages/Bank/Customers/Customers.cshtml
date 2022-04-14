@@ -1,7 +1,9 @@
 ﻿@page
-@model BankStartWeb.Pages.Bank.CustomersModel
+@model BankStartWeb.Pages.Bank.Customers.CustomersModel
 @{
 }
+
+<a asp-page="/CRUD-Customer/NewCustomer">Add new customer</a>
 
 <form method="get">
     <input placeholder="Search" asp-for="@Model.SearchString" />

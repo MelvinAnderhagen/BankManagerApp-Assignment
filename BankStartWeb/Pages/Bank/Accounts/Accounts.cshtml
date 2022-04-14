@@ -1,5 +1,5 @@
 ﻿@page
-@model BankStartWeb.Pages.Bank.AccountModel
+@model BankStartWeb.Pages.Bank.Accounts.AccountsModel
 @{
 }
 
@@ -20,7 +20,7 @@
         <td>Account Type: @account.AccountType</td>
         <td>Balance: @account.Balance</td>
         <td>Created: @account.Created</td>   
-        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions">Transactions</a></td>
+        <td><a asp-route-accountId="@account.AccountId" asp-route-customerId="" asp-page="/Bank/Transactions">Transactions</a></td>
     </tr>
 }
 

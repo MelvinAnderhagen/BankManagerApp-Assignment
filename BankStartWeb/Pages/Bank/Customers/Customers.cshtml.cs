@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankStartWeb.Pages.Bank
+namespace BankStartWeb.Pages.Bank.Customers
 {
     public class CustomersModel : PageModel
     {

@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace BankStartWeb.Pages.Bank
+namespace BankStartWeb.Pages.Bank.Accounts
 {
-    public class AccountModel : PageModel
+    public class AccountsModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public AccountModel(ApplicationDbContext context)
+        public AccountsModel(ApplicationDbContext context)
         {
             _context = context;
         }
