@@ -3,7 +3,7 @@
 @{
 }
 
-<a asp-page="/CRUD-Customer/NewCustomer">Add new customer</a>
+<a asp-page="/Bank/Customers/NewCustomer">Add new customer</a>
 
 <form method="get">
     <input placeholder="Search" asp-for="@Model.SearchString" />
@@ -35,12 +35,12 @@
     @foreach (var customer in @Model.customers)
     {
         <tr>
-            <td><a asp-page="/Bank/Customer" asp-route-customerId="@customer.Id">@customer.Id</a></td>
+            <td><a asp-page="/Bank/Customers/Customer" asp-route-customerId="@customer.Id">@customer.Id</a></td>
             <td>@customer.Givenname</td>
             <td>@customer.Surname</td>
             <td>@customer.Streetaddress</td>
             <td>@customer.City</td>
-            <td><a asp-page="/EditCustomer" asp-route-customerId="@customer.Id">Edit</a></td>
+            <td><a asp-page="/Bank/Customers/EditCustomer" asp-route-customerId="@customer.Id">Edit</a></td>
         </tr>
     }
 
@@ -48,10 +48,10 @@
         <td>
             @if (@Model.PageNo > 1)
             {
-                <a asp-page="/Bank/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-search="@Model.SearchString" asp-route-pageno="@(Model.PageNo-1)">Prev</a>
+                <a asp-page="/Bank/Customers/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-search="@Model.SearchString" asp-route-pageno="@(Model.PageNo-1)">Prev</a>
             }
         </td>
         <td></td>
-        <td><a asp-page="/Bank/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-searchString="@Model.SearchString" asp-route-pageno="@(Model.PageNo+1)">Next</a></td>
+        <td><a asp-page="/Bank/Customers/Customers" asp-route-order="@Model.SortOrder" asp-route-col="@Model.SortCol" asp-route-searchString="@Model.SearchString" asp-route-pageno="@(Model.PageNo+1)">Next</a></td>
     </tr>
 </table>

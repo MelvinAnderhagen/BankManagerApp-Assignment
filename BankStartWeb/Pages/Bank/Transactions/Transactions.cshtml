@@ -34,12 +34,14 @@
 <a class="btn" href="javascript:fetchMore();">See more...</a>
 </table>
 
+@* <--- Ajax method ---> *@
 @section Scripts
 {
     <script>
         pageNo = 1;
+
         function fetchMore() {
-            fetch("View?handler=FetchMore&pageNo=" + pageNo + "&personId=@Model.Id")
+            fetch("View?handler=FetchMore&pageNo=" + pageNo + "&transactionId=@Model.AccountId")
                 .then((response) => response.json())
                 .then((json) => {
                         pageNo = pageNo + 1;
@@ -47,23 +49,11 @@
                     }
                 );
         }
-/*
- *
-         lastPage = 0;
-        function fetchMore() {
-            fetch("View?handler=FetchMore&lastPage=" + lastPage + "&personId=@Model.Id")
-                .then((response) => response.json())
-                .then((json) => {
-                        lastPage = lastPage + 1;
-                        json.items.forEach(tableElements);
-                    }
-                );
-        }
- *
- */ 
+
         function tableElements(element) {
             document.querySelector('#posts-table tbody').innerHTML +=
                 `<tr>
+        <td>${element.Id}</td>
         <td>${element.Type}</td>
         <td>${element.Operation}</td>
         <td>${element.Date}</td>
@@ -72,19 +62,22 @@
         <td onclick="fetchEvaluation(${element.id}, this)">Beräkna värde</td>
     </tr>`;
         }
-        document.addEventListener("DOMContentLoaded", function () {
-            fetchMore();
-        });
+
+        document.addEventListener("DOMContentLoaded",
+            function() {
+                fetchMore();
+            });
+
         function fetchEvaluation(id, elem) {
             fetch("View?handler=FetchValue&id=" + id)
                 .then((response) => response.json())
                 .then((json) => {
                         elem.innerHTML = json.value;
                     }
-            
                 );
-            
-        }
-    </script>   
 
-@*<a>Go Back</a> coming soon...*@ 
+        }
+    </script>
+}
+
+    @*<a>Go Back</a> coming soon...*@ 

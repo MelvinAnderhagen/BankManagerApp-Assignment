@@ -1,4 +1,5 @@
 using BankStartWeb.Data;
+using BankStartWeb.Infrastructure.Paging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,8 @@ namespace BankStartWeb.Pages.Bank.Transactions
         {
             _context = context;
         }
+
         public List<TransactionsViewModel> Transactions { get; set; }
-        public string Givenname { get; set; }
-        public string Surname { get; set; }
         public int CustomerId { get; set; }
         public int AccountId { get; set; }
         public class TransactionsViewModel
@@ -48,5 +48,27 @@ namespace BankStartWeb.Pages.Bank.Transactions
             }).ToList();
         }
 
+        public IActionResult OnGetFetchMore(int transactionId, int pageNo)
+        {
+            var query = _context.Accounts.Where(e => e.Id == transactionId)
+                .SelectMany(e => e.Transactions)
+                .OrderBy(e => e.Amount)
+                ;
+            var r = query.GetPaged(pageNo, 5);
+
+            var list = r.Results.Select(e => new TransactionsViewModel
+            {
+                Id = e.Id,
+                Amount = e.Amount,
+                Type = e.Type,
+                Operation = e.Operation,
+                Date = e.Date,
+                NewBalance = e.NewBalance
+            }).ToList();
+
+            bool lastPage = pageNo == r.PageCount;
+
+            return new JsonResult(new { items = list, lastPage = lastPage });
+        }
     }
 }

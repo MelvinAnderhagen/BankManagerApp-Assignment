@@ -5,13 +5,16 @@
 
 <h1>@Model.Givenname @Model.Surname's account details</h1>
 
+<a class="btn btn-primary" asp-page="/Bank/Accounts/Create">Create New Account</a>
+
 <table class="table">
     <thead>
         <tr>
         <th>Account type</th>
         <th>Account balance</th>
         <th>Account created</th>
-        <th></th>
+        <th>Transactions</th>
+        <th>Edit</th>
         </tr>
     </thead>
 @foreach (var account in @Model.ListOfAccounts)
@@ -20,9 +23,10 @@
         <td>Account Type: @account.AccountType</td>
         <td>Balance: @account.Balance</td>
         <td>Created: @account.Created</td>   
-        <td><a asp-route-accountId="@account.AccountId" asp-route-customerId="" asp-page="/Bank/Transactions">Transactions</a></td>
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions/Transactions">Transactions</a></td>
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Accounts/Edit">Edit</a></td>
     </tr>
 }
 
 </table>
-<a asp-route-customerId="@Model.CustomerId" asp-page="/Bank/Customer">Go Back</a>
+<a asp-route-customerId="@Model.CustomerId" asp-page="/Bank/Customers/Customer">Go Back</a>

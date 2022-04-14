@@ -5,15 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BankStartWeb.Pages.Bank.Customers
 {
+    [BindProperties]
     public class NewCustomerModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-
-        public NewCustomerModel(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
+        
         [Required]
         public string Givenname { get; set; }
         [Required]
@@ -32,12 +28,18 @@ namespace BankStartWeb.Pages.Bank.Customers
         public string NationalId { get; set; }
         [Required]
         public string Telephone { get; set; }
-        [Required]
+        [Required] 
+        [EmailAddress]
         public string EmailAddress { get; set; }
-        [Required]
+        [Required] 
         public int TelephoneConutryCode { get; set; }
-        [Required]
+        [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
+
+        public NewCustomerModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         public void OnGet()
         {
@@ -48,7 +50,7 @@ namespace BankStartWeb.Pages.Bank.Customers
         {
             if (ModelState.IsValid)
             {
-                var customer = new Customer();
+                var customer = new Data.Customer();
                 customer.Givenname = Givenname;
                 customer.Surname = Surname; 
                 customer.Streetaddress = Streetaddress;
@@ -62,7 +64,7 @@ namespace BankStartWeb.Pages.Bank.Customers
                 customer.Birthday = BirthDay;
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
-                return RedirectToPage("/Bank/Customers");
+                return RedirectToPage("/Bank/Customers/Customers");
             }
 
             return Page();
