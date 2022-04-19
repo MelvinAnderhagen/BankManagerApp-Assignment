@@ -41,13 +41,13 @@
 
         <div class="form-group">
             <label asp-for="Country">Country</label>
-            <input class="form-control" asp-for="Country">
+            <select class="form-control" asp-for="Country" asp-items="@Model.AllCountries"></select>
             <span asp-validation-for="Country" class="field-validation-error"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="CountryCode">Country code</label>
-            <input class="form-control" asp-for="CountryCode" placeholder="ex. SE">
+            <select class="form-control" asp-for="CountryCode" asp-items="@Model.AllCountryCodes"></select>
             <span asp-validation-for="CountryCode" class="field-validation-error"></span>
         </div>
 
@@ -78,7 +78,7 @@
 
          <div class="form-group">
             <label asp-for="TelephoneConutryCode">Telephone Country Code</label>
-            <input class="form-control" asp-for="TelephoneConutryCode" placeholder="ex. +46"/>
+             <select class="form-control" asp-for="TelephoneConutryCode" asp-items="@Model.AllTelephoneCountryCodes"></select>
             <span asp-validation-for="TelephoneConutryCode" class="field-validation-error"></span>
         </div>
 

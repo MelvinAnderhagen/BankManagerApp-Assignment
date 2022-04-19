@@ -3,6 +3,7 @@ using BankStartWeb.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankStartWeb.Pages.Bank.Customers
 {
@@ -37,6 +38,10 @@ namespace BankStartWeb.Pages.Bank.Customers
         [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
 
+        public List<SelectListItem> AllCountries { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> AllTelephoneCountryCodes { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> AllCountryCodes { get; set; } = new List<SelectListItem>();
+
         public EditCustomerModel(ApplicationDbContext context)
         {
             _context = context;
@@ -57,6 +62,21 @@ namespace BankStartWeb.Pages.Bank.Customers
             TelephoneConutryCode = customer.TelephoneCountryCode;
             BirthDay = customer.Birthday;
             EmailAddress = customer.EmailAddress;
+
+            AllCountries.Add(new SelectListItem("Finland", "Finland"));
+            AllCountries.Add(new SelectListItem("Sweden", "Sweden"));
+            AllCountries.Add(new SelectListItem("Norway", "Norway"));
+            AllCountries.Add(new SelectListItem("Denmark", "Denmark"));
+
+            AllTelephoneCountryCodes.Add(new SelectListItem("Finland(+358)", "+358"));
+            AllTelephoneCountryCodes.Add(new SelectListItem("Sweden(+46)", "+46"));
+            AllTelephoneCountryCodes.Add(new SelectListItem("Norway(+47)", "+47"));
+            AllTelephoneCountryCodes.Add(new SelectListItem("Denmark(+45)", "+45"));
+
+            AllCountryCodes.Add(new SelectListItem("FI", "FI"));
+            AllCountryCodes.Add(new SelectListItem("SE", "SE"));
+            AllCountryCodes.Add(new SelectListItem("NO", "NO"));
+            AllCountryCodes.Add(new SelectListItem("DK", "DK"));
 
 
         }
