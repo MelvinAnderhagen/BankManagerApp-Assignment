@@ -542,7 +542,7 @@ a, a:focus, a:hover {
 ==================================================================*/
 .navigation {
     transition: .3s all;
-    background: #1f2532;
+    background: #888888;
 }
 
     .navigation .navbar-nav > li.active a {

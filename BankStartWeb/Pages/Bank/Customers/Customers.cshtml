@@ -3,12 +3,14 @@
 @{
 }
 
-<a asp-page="/Bank/Customers/NewCustomer">Add new customer</a>
+
 
 <form method="get">
     <input placeholder="Search" asp-for="@Model.SearchString" />
     <input type="submit" value="Search" />
 </form>
+
+<a class="btn btn-primary" asp-page="/Bank/Customers/NewCustomer"><i class='bx bx-plus-circle'></i>Add new customer</a>
 
 <table class="table">
     <thead>

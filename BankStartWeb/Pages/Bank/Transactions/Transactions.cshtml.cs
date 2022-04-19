@@ -48,27 +48,27 @@ namespace BankStartWeb.Pages.Bank.Transactions
             }).ToList();
         }
 
-        public IActionResult OnGetFetchMore(int transactionId, int pageNo)
-        {
-            var query = _context.Accounts.Where(e => e.Id == transactionId)
-                .SelectMany(e => e.Transactions)
-                .OrderBy(e => e.Amount)
-                ;
-            var r = query.GetPaged(pageNo, 5);
+        //public IActionResult OnGetFetchMore(int transactionId, int pageNo)
+        //{
+        //    var query = _context.Accounts.Where(e => e.Id == transactionId)
+        //        .SelectMany(e => e.Transactions)
+        //        .OrderBy(e => e.Amount)
+        //        ;
+        //    var r = query.GetPaged(pageNo, 5);
 
-            var list = r.Results.Select(e => new TransactionsViewModel
-            {
-                Id = e.Id,
-                Amount = e.Amount,
-                Type = e.Type,
-                Operation = e.Operation,
-                Date = e.Date,
-                NewBalance = e.NewBalance
-            }).ToList();
+        //    var list = r.Results.Select(e => new TransactionsViewModel
+        //    {
+        //        Id = e.Id,
+        //        Amount = e.Amount,
+        //        Type = e.Type,
+        //        Operation = e.Operation,
+        //        Date = e.Date,
+        //        NewBalance = e.NewBalance
+        //    }).ToList();
 
-            bool lastPage = pageNo == r.PageCount;
+        //    bool lastPage = pageNo == r.PageCount;
 
-            return new JsonResult(new { items = list, lastPage = lastPage });
-        }
+        //    return new JsonResult(new { items = list, lastPage = lastPage });
+        //}
     }
 }

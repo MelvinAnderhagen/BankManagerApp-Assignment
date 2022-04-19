@@ -5,7 +5,7 @@
 
 <h1>@Model.Givenname @Model.Surname's account details</h1>
 
-<a class="btn btn-primary" asp-page="/Bank/Accounts/Create">Create New Account</a>
+<a class="btn btn-primary" asp-route-customerId="@Model.CustomerId" asp-page="/Bank/Accounts/AddAccount">Create New Account</a>
 
 <table class="table">
     <thead>
@@ -24,7 +24,7 @@
         <td>Balance: @account.Balance</td>
         <td>Created: @account.Created</td>   
         <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions/Transactions">Transactions</a></td>
-        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Accounts/Edit">Edit</a></td>
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Accounts/EditAccount">Edit</a></td>
     </tr>
 }
 

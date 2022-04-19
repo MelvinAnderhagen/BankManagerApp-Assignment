@@ -4,9 +4,183 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@*<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 align-self-center mb-4 mb-lg-0">
+				<div class="video-player">
+					<img class="img-fluid rounded" src="images/slider/slider-bg-2.jpg" alt="">
+					<a class="play-icon">
+						<i class="tf-ion-ios-play" data-video="https://www.youtube.com/embed/g3-VxLQO7do?autoplay=1"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="block">
+					<h2>Bitcoin is a remarkable cryptographic achievement</h2>
+					<p>The ability to create something which is not duplicable in the digital world has enormous value…Lot’s of people will build businesses on top of that.</p>
+					<ul class="list-inline">
+						<li class="list-inline-item">
+							<a data-scroll href="#services" class="btn btn-main">Explore Us</a>		
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	*@
 
+<section class="counter section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-3">
+                <div class="counters-item">
+                    <span>@Model.CountCustomers</span>
+                    <p>Customers</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-3">
+                <div class="counters-item">
+                    <span>@Model.CountAccounts</span>
+                    <p>Active accounts</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-3">
+                <div class="counters-item">
+                    <span>@Model.CountTransactions</span>
+                    <p>Transactions made</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-3">
+                <div class="counters-item kill-border">
+                    <span>10B</span>
+                    <p>Total balance amount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+Start About Section
+==================================== -->
+
+<section class="services section-xs"  id="services">
+	<div class="container">
+		<div class="row">
+			<!-- Single Service Item -->
+			<div class="col-md-4 col-sm-6 col-xs-12" >
+				<div class="service-block color-bg text-center">
+					<div class="service-icon text-center">
+						<img src="images/icons/bitcoin-safety-shield.png" alt="">
+					</div>
+					<h3>Easy & Secure</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+				</div>
+			</div>
+			<!-- End Single Service Item -->
+			
+			<!-- Single Service Item -->
+			<div class="col-md-4 col-sm-6 col-xs-12" >
+				<div class="service-block text-center">
+					<div class="service-icon text-center">
+						<img src="images/icons/bitcoin-exchange.png" alt="">
+					</div>
+					<h3>Instant Exchange</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+				</div>
+			</div>
+			<!-- End Single Service Item -->
+			
+			<!-- Single Service Item -->
+			<div class="col-md-4 col-sm-6 col-xs-12 mx-auto"  >
+				<div class="service-block color-bg text-center">
+					<div class="service-icon text-center">
+						<img src="images/icons/bitcoin-network.png" alt="">
+					</div>
+					<h3>Strong Network</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+				</div>
+			</div>
+            <!-- Single Service Item -->
+            <div class="col-md-4 col-sm-6 col-xs-12" >
+                <div class="service-block color-bg text-center">
+                    <div class="service-icon text-center">
+                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
+                    </div>
+                    <h3>Easy & Secure</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                </div>
+            </div>
+            <!-- End Single Service Item -->
+            <!-- Single Service Item -->
+            <div class="col-md-4 col-sm-6 col-xs-12" >
+                <div class="service-block color-bg text-center">
+                    <div class="service-icon text-center">
+                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
+                    </div>
+                    <h3>Easy & Secure</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                </div>
+            </div>
+            <!-- End Single Service Item -->
+            <!-- Single Service Item -->
+            <div class="col-md-4 col-sm-6 col-xs-12" >
+                <div class="service-block color-bg text-center">
+                    <div class="service-icon text-center">
+                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
+                    </div>
+                    <h3>Easy & Secure</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
+                </div>
+            </div>
+            <!-- End Single Service Item -->
+		</div> 		<!-- End row -->
+	</div>   	<!-- End container -->
+</section>   <!-- End section -->
+			
+			
+			
+
+<!--
+Start About Section
+==================================== -->
+<section class="service-2 section bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="title text-center">
+            <h4>BANK AB
+            </h4>
+          <h2>How It Works</h2>
+          <span class="border"></span>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 p-0">
+        <div class="service-item text-center">
+            <span class="count">1.</span>
+            <h4>Sign Up</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+        </div>
+      </div>
+      <div class="col-md-4 p-0">
+        <div class="service-item text-center">
+          <span class="count">2.</span>
+          <h4>Connect</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+        </div>
+      </div>
+      <div class="col-md-4 p-0">
+        <div class="service-item text-center">
+          <span class="count">3.</span>
+          <h4>Buy Digital Currency</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+        </div>
+      </div>
+    </div>    <!-- End row -->
+  </div>    <!-- End container -->
+</section>   <!-- End section -->
 

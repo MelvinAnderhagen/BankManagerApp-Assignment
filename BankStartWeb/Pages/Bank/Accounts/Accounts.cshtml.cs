@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using BankStartWeb.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +21,10 @@ public class AccountsModel : PageModel
 
     public void OnGet(int customerId)
     {
-        //var customer = _context.Customers.FirstOrDefault(x => x.Id == customerId);
 
-        var account = _context.Customers.Include(x => x.Accounts).First(x => x.Id == customerId);
+        var account = _context.Customers
+            .Include(x => x.Accounts)
+            .FirstOrDefault(x => x.Id == customerId);
 
         ListOfAccounts = account.Accounts.Select(x => new AccountViewModel
         {
@@ -41,6 +43,7 @@ public class AccountsModel : PageModel
     {
         public int AccountId { get; set; }
         public string AccountType { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Created { get; set; }
         public decimal Balance { get; set; }
     }

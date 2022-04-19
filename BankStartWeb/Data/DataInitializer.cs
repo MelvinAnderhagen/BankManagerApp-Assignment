@@ -6,32 +6,68 @@ namespace BankStartWeb.Data;
 
 public class DataInitializer
 {
-    private readonly ApplicationDbContext _dbContext;
+    private readonly ApplicationDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
 
 
-    public DataInitializer(ApplicationDbContext dbContext,
+    public DataInitializer(ApplicationDbContext context,
         UserManager<IdentityUser> userManager)
     {
-        _dbContext = dbContext;
+        _context = context;
         _userManager = userManager;
     }
 
 
     public void SeedData()
     {
-        _dbContext.Database.Migrate();
+        _context.Database.Migrate();
         SeedCustomers();
+        SeedRoles();
+        SeedUsers();
+    }
+
+    private void SeedRoles()
+    {
+        CreateRoleIfNotExists("Admin");
+        CreateRoleIfNotExists("Cashier");
+    }
+
+    private void CreateRoleIfNotExists(string rolename)
+    {
+        if (_context.Roles.Any(e => e.Name == rolename))
+            return;
+        _context.Roles.Add(new IdentityRole { Name = rolename, NormalizedName = rolename });
+        _context.SaveChanges();
+    }
+
+    private void CreateUserIfNotExists(string email, string password, string[] roles)
+    {
+        if (_userManager.FindByEmailAsync(email).Result != null) return;
+
+        var user = new IdentityUser
+        {
+            UserName = email,
+            Email = email,
+            EmailConfirmed = true
+        };
+        _userManager.CreateAsync(user, password).Wait();
+        _userManager.AddToRolesAsync(user, roles).Wait();
+    }
+
+    private void SeedUsers()
+    {
+        CreateUserIfNotExists("stefan.holmberg@systementor.se", "Hejsan123#", new[] {"Admin"});
+        CreateUserIfNotExists("stefan.holmberg@customer.banken.se", "Hejsan123#", new[] {"Cashier"});
     }
 
     private void SeedCustomers()
     {
-        while (_dbContext.Customers.Count() < 5000)
+        while (_context.Customers.Count() < 5000)
         {
             var a =
                 GenerateCustomer();
-            _dbContext.Customers.Add(a);
-            _dbContext.SaveChanges();
+            _context.Customers.Add(a);
+            _context.SaveChanges();
         }
 
     }
