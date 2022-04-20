@@ -1,8 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using BankStartWeb.Data;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
-namespace BankStartWeb.Pages.Bank.Customers
+namespace BankStartWeb.Pages.Bank.Customer
 {
     public class CustomerModel : PageModel
     {
@@ -26,13 +27,25 @@ namespace BankStartWeb.Pages.Bank.Customers
         public string EmailAddress { get; set; }
         public DateTime Birthday { get; set; }
         public int AccountId { get; set; }
-        public List<Account> Accounts { get; set; }
+
+        public class AccountViewModel
+        {
+            public int AccountId { get; set; }
+            public string AccountType { get; set; }
+            [DataType(DataType.Date)]
+            public DateTime Created { get; set; }
+            public decimal Balance { get; set; }
+        }
+
+        public List<AccountViewModel> Accounts { get; set; }
        
-        public void OnGet(int customerId = 1)
+        public void OnGet(int customerId)
         {
             var customer = _context.Customers.FirstOrDefault(x => x.Id == customerId);
 
-            var accountid = _context.Accounts.FirstOrDefault(x => x.Id == AccountId);
+            var account = _context.Customers
+                .Include(x => x.Accounts)
+                .FirstOrDefault(x => x.Id == customerId);
 
             Id = customer.Id;
             Givenname = customer.Givenname;
@@ -46,7 +59,20 @@ namespace BankStartWeb.Pages.Bank.Customers
             EmailAddress = customer.EmailAddress;
             Birthday = customer.Birthday;
             Country = customer.Country;
-            NationalId = customer.NationalId;   
+            NationalId = customer.NationalId;
+
+            
+
+            Accounts = account.Accounts.Select(x => new AccountViewModel
+            {
+                AccountId = x.Id,
+                AccountType = x.AccountType,
+                Balance = x.Balance,
+                Created = x.Created
+            }).ToList();
+
+            Surname = account.Surname;
+            Givenname = account.Givenname;
         }
     }
 }

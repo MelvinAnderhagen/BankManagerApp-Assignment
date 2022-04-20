@@ -37,7 +37,7 @@
     @foreach (var customer in @Model.customers)
     {
         <tr>
-            <td><a asp-page="/Bank/Customers/Customer" asp-route-customerId="@customer.Id">@customer.Id</a></td>
+            <td><a asp-page="/Bank/Customer/Customer" asp-route-customerId="@customer.Id">@customer.Id</a></td>
             <td>@customer.Givenname</td>
             <td>@customer.Surname</td>
             <td>@customer.Streetaddress</td>

@@ -1,0 +1,46 @@
+﻿@page
+@model BankStartWeb.Pages.Bank.Customer.CustomerModel
+
+@{
+}
+
+<h2>@Model.Givenname @Model.Surname</h2>
+
+<h3>City: @Model.City</h3>
+<h3>Street: @Model.Streetaddress</h3>
+<h3>Zipcode: @Model.Zipcode</h3>
+<h3>Country: @Model.Country</h3>
+<h3>Country code: @Model.CountryCode</h3>
+<h3>National id: @Model.NationalId</h3>
+<h3>Telephone: @Model.TelephoneCountryCode @Model.Telephone</h3>
+<h3>Email: @Model.EmailAddress</h3>
+<h3>Birthday: @Model.Birthday</h3>
+
+<a class="btn btn-primary" asp-route-customerId="@Model.Id" asp-page="/Bank/Accounts/AddAccount">Create New Account</a>
+
+<table class="table">
+<thead>
+<tr>
+    <th>Account type</th>
+    <th>Account balance</th>
+    <th>Account created</th>
+    <th>Transactions</th>
+    <th>Edit</th>
+</tr>
+</thead>
+
+@foreach (var account in @Model.Accounts)
+{
+    <tr>
+        <td>Account Type: @account.AccountType</td>
+        <td>Balance: @account.Balance</td>
+        <td>Created: @account.Created</td>   
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions/Transactions">Transactions</a></td>
+        <td><a asp-route-accountId="@account.AccountId" asp-page="/Bank/Accounts/EditAccount">Edit</a></td>
+    </tr>
+}
+
+</table>
+
+<a asp-page="/Bank/Customers/Customers">Go Back</a>
+

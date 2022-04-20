@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label asp-for="AccountType">Account type: </label>
-            <input class="form-control" asp-for="AccountType"/>
+            <select class="form-control" asp-for="AccountType" asp-items="@Model.AllAccountTypes"></select>
             <span asp-validation-for="AccountType" class="field-validation-error"></span>
         </div>
 
