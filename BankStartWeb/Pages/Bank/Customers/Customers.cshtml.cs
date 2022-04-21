@@ -1,10 +1,12 @@
 using BankStartWeb.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankStartWeb.Pages.Bank.Customers
 {
+    [Authorize]
     public class CustomersModel : PageModel
     {
         public CustomersModel(ApplicationDbContext context)

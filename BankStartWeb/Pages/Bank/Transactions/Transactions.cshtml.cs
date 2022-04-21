@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BankStartWeb.Pages.Bank.Transactions
 {
+    [Authorize]
     public class TransactionsModel : PageModel
     {
         private readonly ApplicationDbContext _context;
