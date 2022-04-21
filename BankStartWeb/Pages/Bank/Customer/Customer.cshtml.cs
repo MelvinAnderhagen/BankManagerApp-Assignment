@@ -25,6 +25,7 @@ namespace BankStartWeb.Pages.Bank.Customer
         public int TelephoneCountryCode { get; set; }
         public string Telephone { get; set; }
         public string EmailAddress { get; set; }
+        [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
         public int AccountId { get; set; }
 

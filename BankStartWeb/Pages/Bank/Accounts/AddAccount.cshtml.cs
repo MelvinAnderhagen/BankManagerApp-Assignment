@@ -37,24 +37,33 @@ namespace BankStartWeb.Pages.Bank.Accounts
             var customer = _context.Customers
                 .FirstOrDefault(e => e.Id == customerId);
 
+            CustomerId = customerId;
+
             AllAccountTypes.Add(new SelectListItem("Savings", "Savings"));
             AllAccountTypes.Add(new SelectListItem("Checking", "Checking"));
             AllAccountTypes.Add(new SelectListItem("Personal", "Personal"));
 
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(int customerId)
         {
+            var customer = _context.Customers
+                .Include(e => e.Accounts)
+                .FirstOrDefault(e => e.Id == customerId);
+
+            CustomerId = customerId;
+
             if (ModelState.IsValid)
             {
                 var account = new Data.Account();
+                
                 account.AccountType = AccountType;
                 account.Balance = 0;
                 account.Created = Created;
-                _context.Accounts.Add(account);
+                customer.Accounts.Add(account);
                 _context.SaveChanges();
 
-                return RedirectToPage("/Bank/Customer/Customer");
+                return RedirectToPage("/Bank/Customer/Customer", new {customerId = CustomerId});
             }
 
             return Page();
