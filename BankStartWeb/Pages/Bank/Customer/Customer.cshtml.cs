@@ -15,6 +15,7 @@ namespace BankStartWeb.Pages.Bank.Customer
         {
             _context = context;
         }        
+
         public int Id { get; set; }
         public string Givenname { get; set; }
         public string Surname { get; set; }
@@ -29,7 +30,6 @@ namespace BankStartWeb.Pages.Bank.Customer
         public string EmailAddress { get; set; }
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
-        public int AccountId { get; set; }
 
         public class AccountViewModel
         {
