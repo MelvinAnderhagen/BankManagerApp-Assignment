@@ -16,6 +16,8 @@ namespace BankStartWeb.Pages.Bank.Customer
             _context = context;
             _accountService = accountService;
         }
+
+        public int AccountId { get; set; }
         [Range(1, 10000)]
         public decimal Amount { get; set; }
         public string Type { get; set; }
@@ -25,17 +27,21 @@ namespace BankStartWeb.Pages.Bank.Customer
             var account = _context.Accounts.FirstOrDefault(e => e.Id == accountId);
 
             var id = account.Id;
+
+            
         }
 
         public IActionResult OnPost(int accountId, decimal amount)
         {
+            AccountId = accountId;
+
             if (ModelState.IsValid)
             {
                 var status = _accountService.Deposit(accountId, amount);
 
                 if (status == IAccountService.ErrorCode.ok)
                 {
-                    return RedirectToPage("/Bank/Transactions/Transactions", new {id = accountId});
+                    return RedirectToPage("/Bank/Transactions/Transactions", new {accountId = AccountId});
                 }
                 
                 ModelState.AddModelError("amount", "invalid amount");

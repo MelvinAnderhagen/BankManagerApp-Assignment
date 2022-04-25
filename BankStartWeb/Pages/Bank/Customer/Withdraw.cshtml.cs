@@ -17,6 +17,7 @@ namespace BankStartWeb.Pages.Bank.Customer
             _accountService = accountService;
         }
 
+        public int AccountId { get; set; }
         public decimal Amount { get; set; }
         public string Type { get; set; }
 
@@ -35,7 +36,7 @@ namespace BankStartWeb.Pages.Bank.Customer
 
                 if (status == IAccountService.ErrorCode.ok)
                 {
-                    return RedirectToPage("/Bank/Transactions/Transactions", new {id = accountId});
+                    return RedirectToPage("/Bank/Transactions/Transactions", new {accountId = AccountId});
                 }
             }
 

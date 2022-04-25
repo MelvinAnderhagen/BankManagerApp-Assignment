@@ -31,6 +31,7 @@ namespace BankStartWeb.Pages.Bank.Customer
         [DataType(DataType.Date)]
         public DateTime Birthday { get; set; }
 
+        public decimal TotalBalance { get; set; }
         public class AccountViewModel
         {
             public int AccountId { get; set; }
@@ -76,6 +77,13 @@ namespace BankStartWeb.Pages.Bank.Customer
 
             Surname = account.Surname;
             Givenname = account.Givenname;
+
+            TotalBalance = 0;
+
+            foreach (var item in Accounts)
+            {
+                TotalBalance += item.Balance;
+            }
         }
     }
 }

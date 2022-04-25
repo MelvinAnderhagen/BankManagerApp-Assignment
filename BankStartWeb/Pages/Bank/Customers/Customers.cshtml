@@ -12,28 +12,29 @@
 
 <a class="btn btn-primary" asp-page="/Bank/Customers/NewCustomer"><i class='bx bx-plus-circle'></i>Add new customer</a>
 
-<table class="table">
+<table class="table table-striped table-bordered">
     <thead>
     <tr>
-        <th>Id<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="id"><i class='bx bx-sort-down'></i></a>
-        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="id"><i class='bx bx-sort-up'></i></a>    
+        <th class="col-1">Id<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="id"><i class='bx bx-sort-down'></i></a>
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="id"><i class='bx bx-sort-up'></i></a>    
         </th>
-        <th>Givenname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="givenname"><i class='bx bx-sort-down'></i></a>
-        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="givenname"><i class='bx bx-sort-up'></i></a>    
+        <th class="col-2">Givenname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="givenname"> <i class='bx bx-sort-down'> </i></a>
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="givenname"> <i class='bx bx-sort-up'></i></a>    
         </th>
-        <th>Surname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="surname"><i class='bx bx-sort-down'></i></a>
+        <th class="col-2">Surname<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="surname"><i class='bx bx-sort-down'></i></a>
             <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="surname"><i class='bx bx-sort-up'></i></a>
-            </th>
-        <th>Street<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="street"><i class='bx bx-sort-down' ></i></a>
-        <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="street"><i class='bx bx-sort-up' ></i></a>    
         </th>
-        <th>City
+        <th class="col-4">Street<a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="street"><i class='bx bx-sort-down' ></i></a>
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="street"><i class='bx bx-sort-up' ></i></a>    
+        </th>
+        <th class="col-2">City
             <a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="city"><i class='bx bx-sort-down'></i></a>
-             <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="city"><i class='bx bx-sort-up'></i></a>
-            </th>
-        <th></th>
+            <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="city"><i class='bx bx-sort-up'></i></a>
+        </th>
+        <th class="col-1"></th>
     </tr>
     </thead>
+    <tbody>
     @foreach (var customer in @Model.customers)
     {
         <tr>
@@ -45,6 +46,7 @@
             <td><a asp-page="/Bank/Customers/EditCustomer" asp-route-customerId="@customer.Id">Edit</a></td>
         </tr>
     }
+    </tbody>
 
     <tr>
         <td>
