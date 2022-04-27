@@ -119,5 +119,7 @@ namespace BankStartWeb.Services
 
             return IAccountService.ErrorCode.ok;
         }
+
+
     }
 }

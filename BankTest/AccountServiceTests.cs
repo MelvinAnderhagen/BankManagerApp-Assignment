@@ -26,7 +26,7 @@ public class AccountServiceTests
     }
 
     [TestMethod]
-    public void When_Deposit_Is_Negative()
+    public void When_Deposit_Is_Negative_Balance()
     {
         _context.Accounts.Add(new Account
         {
@@ -152,5 +152,53 @@ public class AccountServiceTests
         Assert.AreEqual(IAccountService.ErrorCode.BalanceIsToLow, result);
     }
 
-   
+    [TestMethod]
+    public void When_Account_Amount_Is_Negative_Transfer()
+    {
+        _context.Accounts.Add(new Account
+        {
+            Balance = 5000,
+            AccountType = "Savings",
+            Created = DateTime.Now,
+            Transactions = new List<Transaction>()
+        });
+
+        _context.Accounts.Add(new Account
+        {
+            Balance = 1000,
+            AccountType = "Personal",
+            Created = DateTime.Now,
+            Transactions = new List<Transaction>()
+        });
+
+        _context.Customers.Add(new Customer
+        {
+            Givenname = "Lars",
+            Surname = "Karlsson",
+            Streetaddress = "Grönfiksvägen 42",
+            City = "Stockholm",
+            Country = "Sweden",
+            Zipcode = "14261",
+            Telephone = "01231232",
+            CountryCode = "23",
+            NationalId = "1231234",
+            TelephoneCountryCode = 4213,
+            EmailAddress = "lars@karlsson.se",
+            Birthday = DateTime.Now,
+            Accounts = new List<Account>()
+        });
+
+        _context.SaveChanges();
+
+        //var receiverId = _context.Accounts
+        //    .FirstOrDefault(e => e.Id == 2);
+
+        var result = _sut.Transfer(1, -5000, 2);
+
+        Debug.WriteLine(result);
+
+        Assert.AreEqual(IAccountService.ErrorCode.AmountIsNegative, result);
+    }
+
+
 }
