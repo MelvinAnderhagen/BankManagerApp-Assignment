@@ -12,6 +12,8 @@ namespace BankStartWeb.Services
         {
             _context = context;
         }
+
+
         public IAccountService.ErrorCode Deposit(int accountId, decimal amount)
         {
             if (amount < 0)
@@ -41,12 +43,8 @@ namespace BankStartWeb.Services
         public IAccountService.ErrorCode WithDraw(int accountId, decimal amount)
         {
             var account = _context.Accounts.FirstOrDefault(e => e.Id == accountId);
-
-            if (account.Balance < amount)
-            {
-                return IAccountService.ErrorCode.BalanceIsToLow;
-            }
-            else if (amount < 0)
+            
+            if (amount < 0)
             {
                 return IAccountService.ErrorCode.AmountIsNegative;
             }
@@ -59,13 +57,19 @@ namespace BankStartWeb.Services
             transaction.Operation = "Withdraw";
             transaction.Date = DateTime.Now;
             transaction.NewBalance = account.Balance;
+
+            if (account.Balance < amount)
+            {
+                return IAccountService.ErrorCode.BalanceIsToLow;
+            }
+
             account.Transactions.Add(transaction);
             _context.SaveChanges();
 
             return IAccountService.ErrorCode.ok;
         }
 
-        public IAccountService.ErrorCode Transfer(int accountId, decimal amount, int recieverId)
+        public IAccountService.ErrorCode Transfer(int accountId, decimal amount, int receiverId)
         {
             if (amount < 0)
             {
@@ -80,7 +84,7 @@ namespace BankStartWeb.Services
             
             var receiverTransfer = _context.Accounts
                 .Include(e => e.Transactions)
-                .FirstOrDefault(e => e.Id == recieverId);
+                .FirstOrDefault(e => e.Id == receiverId);
 
             var sender = new Transaction();
             {

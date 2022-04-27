@@ -20,6 +20,7 @@ public class Customer
     public string EmailAddress { get; set; }
     public DateTime Birthday { get; set; }
 
+    //public string Fullname { get; set; }
     public List<Account> Accounts { get; set; } = new List<Account>();
 
 }
