@@ -46,7 +46,7 @@ namespace BankStartWeb.Pages.Bank.Transactions
             public void OnGet(int accountId)
             {
                 var transaction = _context.Customers.Include(e => e.Accounts)
-                    .ThenInclude(e => e.Transactions.OrderByDescending(e => e.Date))
+                    .ThenInclude(e => e.Transactions.OrderByDescending(e => e.Id))
                     .FirstOrDefault(e => e.Accounts.Any(e => e.Id == accountId));
 
 
@@ -77,7 +77,7 @@ namespace BankStartWeb.Pages.Bank.Transactions
                     Operation = e.Operation,
                     Date = e.Date,
                     NewBalance = e.NewBalance
-                }).ToList();
+                }).ToList().OrderByDescending(e => e.Date);
 
                 bool lastPage = pageNo == r.PageCount;
 

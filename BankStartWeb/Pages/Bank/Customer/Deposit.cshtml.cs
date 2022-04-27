@@ -20,15 +20,13 @@ namespace BankStartWeb.Pages.Bank.Customer
         public int AccountId { get; set; }
         [Range(1, 10000)]
         public decimal Amount { get; set; }
-        public string Type { get; set; }
+       
 
         public void OnGet(int accountId)
         {
             var account = _context.Accounts.FirstOrDefault(e => e.Id == accountId);
 
             var id = account.Id;
-
-            
         }
 
         public IActionResult OnPost(int accountId, decimal amount)

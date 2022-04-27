@@ -1,46 +1,45 @@
-using System.ComponentModel.DataAnnotations;
 using BankStartWeb.Data;
 using BankStartWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Frameworks;
 
 namespace BankStartWeb.Pages.Bank.Customer
 {
-    public class WithdrawModel : PageModel
+    public class TransferModel : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly IAccountService _accountService;
 
-        public WithdrawModel(ApplicationDbContext context, IAccountService accountService)
+        public TransferModel(ApplicationDbContext context, IAccountService accountService)
         {
             _context = context;
             _accountService = accountService;
         }
         [BindProperty]
-        public int AccountId { get; set; }
+        public int ReceiverId { get; set; }
         [BindProperty]
-        [Range(1,8000)]
         public decimal Amount { get; set; }
-
+        [BindProperty]
+        public int AccountId { get; set; }
+        public List<Account> Accounts { get; set; }
         public void OnGet(int accountId)
         {
-            var account = _context.Accounts
-                .FirstOrDefault(e => e.Id == accountId);
+            Accounts = _context.Accounts.Select(a => new Account
+            {
+                Id = a.Id
+            }).ToList();
 
-            var id = account.Id;
+            AccountId = accountId;
         }
-
         public IActionResult OnPost(int accountId)
         {
             if (ModelState.IsValid)
             {
-                var status = _accountService.WithDraw(accountId, Amount);
+                var status = _accountService.Transfer(accountId, Amount, ReceiverId);
 
                 if (status == IAccountService.ErrorCode.ok)
                 {
-                    return RedirectToPage("/Bank/Transactions/Transactions", new {accountId = AccountId});
+                    return RedirectToPage("/Bank/Transactions/Transactions", new { accountId = AccountId });
                 }
             }
 

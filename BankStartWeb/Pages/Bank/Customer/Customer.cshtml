@@ -43,6 +43,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
 
@@ -56,6 +57,7 @@
                 <td><a title="Edit" asp-route-customerId="@Model.Id" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/EditAccount"><i class='text-dark h3 bx bx-edit'></i></a></td>
                 <td><a title="Deposit" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Deposit"><i class='text-dark h3 bx bx-credit-card' ></i></a></td>
                 <td><a title="Withdraw" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Withdraw"><i class='text-dark h3 bx bx-money-withdraw' ></i></a></td>
+                <td><a title="Transfer" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Transfer"><i class='text-dark h3 bx bx-transfer'></i></a></td>
             </tr>
         }
 
