@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using BankStartWeb.Data;
 using BankStartWeb.Infrastructure.Paging;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,19 @@ namespace BankStartWeb.Pages.Bank.Transactions
             public string AccountType { get; set; }
             public decimal Balance { get; set; }
             public DateTime Created { get; set; }
+
+            public class TransactionViewModel
+            {
+            public int Id { get; set; }
+
+            [MaxLength(10)]
+            public string Type { get; set; }
+            [MaxLength(50)]
+            public string Operation { get; set; }
+            public DateTime Date { get; set; }
+            public decimal Amount { get; set; }
+            public decimal NewBalance { get; set; }
+            }
             
             public void OnGet(int accountId)
             {
@@ -47,27 +61,27 @@ namespace BankStartWeb.Pages.Bank.Transactions
 
             }
 
-        //public IActionResult OnGetFetchMore(int transactionId, int pageNo)
-        //{
-        //    var query = _context.Accounts.Where(e => e.Id == transactionId)
-        //        .SelectMany(e => e.Transactions)
-        //        .OrderBy(e => e.Amount)
-        //        ;
-        //    var r = query.GetPaged(pageNo, 5);
+            public IActionResult OnGetFetchMore(int accountId, int pageNo)
+            {
+                var query = _context.Accounts.Where(e => e.Id == accountId)
+                    .SelectMany(e => e.Transactions)
+                    .OrderBy(e => e.Amount);
 
-        //    var list = r.Results.Select(e => new TransactionsViewModel
-        //    {
-        //        Id = e.Id,
-        //        Amount = e.Amount,
-        //        Type = e.Type,
-        //        Operation = e.Operation,
-        //        Date = e.Date,
-        //        NewBalance = e.NewBalance
-        //    }).ToList();
+                var r = query.GetPaged(pageNo, 5);
 
-        //    bool lastPage = pageNo == r.PageCount;
+                var list = r.Results.Select(e => new TransactionViewModel
+                {
+                    Id = e.Id,
+                    Amount = e.Amount,
+                    Type = e.Type,
+                    Operation = e.Operation,
+                    Date = e.Date,
+                    NewBalance = e.NewBalance
+                }).ToList();
 
-        //    return new JsonResult(new { items = list, lastPage = lastPage });
-        //}
+                bool lastPage = pageNo == r.PageCount;
+
+                return new JsonResult(new { items = list, lastPage = lastPage });
+            }
     }
 }
