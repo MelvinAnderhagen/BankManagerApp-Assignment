@@ -1911,6 +1911,11 @@ section {
     top: 2px;
 }
 
+.border-radius-for-nav {
+    border-radius: 15px;
+    box-shadow: 2px 1px 20px rgba(68,68,68,0.8);
+}
+
 .made-with-love a {
     color: #fff;
     text-decoration: none;
