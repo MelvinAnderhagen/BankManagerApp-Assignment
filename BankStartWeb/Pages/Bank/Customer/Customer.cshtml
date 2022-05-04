@@ -5,67 +5,68 @@
 }
 
 <div class="row">
-<div class="col-4 col-md-4 col-sm-6" >
-	               <div class="team-member text-center">
-						<div class="member-photo">
-							<!-- member photo -->
-							<img class="img-fluid" src="/images/team/member-2.jpg" alt="team people">
-							<!-- /member photo -->
-						</div>
+    <div class="col-4 col-md-4 col-sm-6" >
+        <div class="team-member">
+            <div class="member-photo">
+                <!-- member photo -->
+                <img class="img-fluid" src="/images/team/member-2.jpg" alt="team people">
+                <!-- /member photo -->
+            </div>
 						
-						<!-- member name & designation -->
-						<div class="member-content">
-							<h2>@Model.Givenname @Model.Surname</h2>
-							<h3>@Model.City , @Model.Streetaddress</h3>
-                            <h3>Zipcode: @Model.Zipcode</h3>
-                            <h3>Country: @Model.Country</h3>
-                            <h3>Country code: @Model.CountryCode</h3>
-                            <h3>National id: @Model.NationalId</h3>
-                            <h3>Telephone: @Model.TelephoneCountryCode @Model.Telephone</h3>
-                            <h3>Email: @Model.EmailAddress</h3>
-                            <h3>Birthday: @Model.Birthday</h3> 
-						</div>
-						<!-- /member name & designation -->
-					</div>
-	            </div>
+            <!-- member name & designation -->
+            <div class="member-content text-center">
+                <h2>@Model.Givenname @Model.Surname</h2>
+                <h3>@Model.City , @Model.Streetaddress</h3>
+                <h3>Zipcode: @Model.Zipcode</h3>
+                <h3>Country: @Model.Country</h3>
+                <h3>Country code: @Model.CountryCode</h3>
+                <h3>National id: @Model.NationalId</h3>
+                <h3>Telephone: @Model.TelephoneCountryCode @Model.Telephone</h3>
+                <h3>Email: @Model.EmailAddress</h3>
+                <h3>Birthday: @Model.Birthday</h3> 
+            </div>
+            <!-- /member name & designation -->
+        </div>
+    </div>
+    
 <!-- end team member -->
 
 <div class="col-8">
-    <a class="mt-1 btn btn-primary" asp-route-customerId="@Model.Id" asp-page="/Bank/Customer/AddAccount">Create New Account</a>
+    <a class="mb-1 btn btn-light" asp-route-customerId="@Model.Id" asp-page="/Bank/Customer/AddAccount"><i class='bx bx-plus-circle'></i> Create New Account</a>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Account type</th>
-            <th>Account balance</th>
-            <th>Account created</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th class="col-2">Account type</th>
+            <th class="col-2">Account balance</th>
+            <th class="col-2">Account created</th>
+            <th class="col-2">Transactions</th>
+            <th class="col-1">Edit</th>
+            <th class="col-1">Deposit</th>
+            <th class="col-1">Withdraw</th>
+            <th class="col-1">Transfer</th>
         </tr>
         </thead>
-
+        <tbody>
         @foreach (var account in @Model.Accounts)
         {
             <tr>
-                <td>Account Type: @account.AccountType</td>
-                <td>Balance: @account.Balance £</td>
-                <td>Created: @account.Created</td>   
-                <td><a title="Transactions" asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions/Transactions"><i class='text-dark h3 bx bx-list-ul' ></i></a></td>
-                <td><a title="Edit" asp-route-customerId="@Model.Id" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/EditAccount"><i class='text-dark h3 bx bx-edit'></i></a></td>
-                <td><a title="Deposit" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Deposit"><i class='text-dark h3 bx bx-credit-card' ></i></a></td>
-                <td><a title="Withdraw" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Withdraw"><i class='text-dark h3 bx bx-money-withdraw' ></i></a></td>
-                <td><a title="Transfer" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Transfer"><i class='text-dark h3 bx bx-transfer'></i></a></td>
+                <td>@account.AccountType</td>
+                <td>@account.Balance £</td>
+                <td>@account.Created</td>   
+                <td><a title="Transactions" asp-route-accountId="@account.AccountId" asp-page="/Bank/Transactions/Transactions"><i class='text-light h3 bx bx-list-ul' ></i></a></td>
+                <td><a title="Edit" asp-route-customerId="@Model.Id" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/EditAccount"><i class='text-light h3 bx bx-edit'></i></a></td>
+                <td ><a title="Deposit" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Deposit"><i class='text-light h3 bx bx-credit-card' ></i></a></td>
+                <td><a title="Withdraw" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Withdraw"><i class='text-light h3 bx bx-money-withdraw' ></i></a></td>
+                <td><a title="Transfer" asp-route-accountId="@account.AccountId" asp-page="/Bank/Customer/Transfer"><i class='text-light h3 bx bx-transfer'></i></a></td>
             </tr>
         }
-
+        </tbody>
     </table>
-    <h3>Total balance: @Model.TotalBalance £</h3>
+    <h3 class="text-light">Total balance: @Model.TotalBalance £</h3>
     </div>
-</div>
-			
+
+</div>		
 				
 				
                 

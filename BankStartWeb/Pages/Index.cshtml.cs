@@ -45,12 +45,7 @@ namespace BankStartWeb.Pages
             {
                 TotalBalance += item.Balance;
             }
-
-            if (TotalBalance >= 1000000)
-            {
-                
-            }
-
+            
             CountTransactions = transactions;
             CountAccounts = accounts;
             CountCustomers = customers;

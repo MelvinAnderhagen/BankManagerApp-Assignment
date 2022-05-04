@@ -1459,7 +1459,7 @@ a, a:focus, a:hover {
     background: #fff;
     margin-bottom: 15px;
     margin-bottom: 30px;
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.07);
 }
 
     .team-member .member-content {
@@ -1878,6 +1878,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.nice-looking-color {
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+.nice-looking-color-left-only {
+    background: -webkit-linear-gradient(left, #25c481, #25c481);
+}
+
 section {
     margin: 50px;
 }
@@ -1911,6 +1920,9 @@ section {
     text-decoration: underline;
 }
 
+.transparent-background {
+    background: transparent;
+}
 
 /* for custom scrollbar for webkit browser*/
 

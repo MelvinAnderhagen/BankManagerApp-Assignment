@@ -5,11 +5,11 @@
 
 
 <div class="row">
-<form class="col-4" method="get">
-    <input placeholder="Search" asp-for="@Model.SearchString" />
-    <input type="submit" value="Search" />
+<form class="col-9" method="get">
+    <input class="h-75" placeholder="Search" asp-for="@Model.SearchString" />
+    <input class="h-75" type="submit" value="Search" />
 </form>
-    <a class="btn-main col-3" asp-page="/Bank/Customers/NewCustomer"><i class='bx bx-plus-circle'></i>Add new customer</a>
+    <a class="btn btn-light col-3 mb-3" asp-page="/Bank/Customers/NewCustomer"><i class='bx bx-plus-circle'></i>Add new customer</a>
 </div>
 <div class="tbl-header">
     <table class="table" cellspacing="0" border="0" cellpadding="0">
