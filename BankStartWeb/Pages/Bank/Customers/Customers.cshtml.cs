@@ -9,11 +9,15 @@ namespace BankStartWeb.Pages.Bank.Customers
     [Authorize]
     public class CustomersModel : PageModel
     {
+        private readonly ApplicationDbContext _context;
+
         public CustomersModel(ApplicationDbContext context)
         {
             _context = context;
         }
-        private readonly ApplicationDbContext _context;
+        
+
+
         public List<CustomersViewModel> customers { get; set; }
         public string SearchString { get; set; }
         public int PageNo { get; set; }

@@ -19,28 +19,21 @@ namespace BankStartWeb.Pages.Bank.Transactions
             _context = context;
         }
 
-            public List<Transaction> Transactions { get; set; }
+            public List<TransactionViewModel> Transactions { get; set; }
 
-            //public int CustomerId { get; set; }
-            //public int AccountId { get; set; }
-
-            public int Id { get; set; }
-
-            public string AccountType { get; set; }
-            public decimal Balance { get; set; }
-            public DateTime Created { get; set; }
+            public int Accountid { get; set; }
 
             public class TransactionViewModel
             {
-            public int Id { get; set; }
+                public int Id { get; set; }
 
-            [MaxLength(10)]
-            public string Type { get; set; }
-            [MaxLength(50)]
-            public string Operation { get; set; }
-            public DateTime Date { get; set; }
-            public decimal Amount { get; set; }
-            public decimal NewBalance { get; set; }
+                [MaxLength(10)]
+                public string Type { get; set; }
+                [MaxLength(50)]
+                public string Operation { get; set; }
+                public DateTime Date { get; set; }
+                public decimal Amount { get; set; }
+                public decimal NewBalance { get; set; }
             }
             
             public void OnGet(int accountId)
@@ -52,14 +45,18 @@ namespace BankStartWeb.Pages.Bank.Transactions
 
                 var account = _context.Accounts.FirstOrDefault(e => e.Id == accountId);
 
-                Id = accountId;
-                AccountType = account.AccountType;
-                Balance = account.Balance;
-                Created = account.Created;
-                Transactions = account.Transactions;
+                Accountid = accountId;
 
-
-        }
+                Transactions = account.Transactions.Select(e => new TransactionViewModel
+                {
+                    Id = e.Id,
+                    Type = e.Type,
+                    Operation = e.Operation,
+                    Date = e.Date,
+                    Amount = e.Amount,
+                    NewBalance = e.NewBalance
+                }).OrderBy(e => e.Id).ToList();
+            }
 
             public IActionResult OnGetFetchMore(int accountId, int pageNo)
             {
