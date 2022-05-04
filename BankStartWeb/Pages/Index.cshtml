@@ -34,27 +34,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-3">
-                <div class="counters-item">
+                <div class="counters-item text-light">
                     <span>@Model.CountCustomers</span>
-                    <p>Customers</p>
+                    <p class="text-light">Active customers</p>
                 </div>
             </div>
             <div class="col-md-3 col-3">
-                <div class="counters-item">
+                <div class="counters-item text-light">
                     <span>@Model.CountAccounts</span>
-                    <p>Active accounts</p>
+                    <p class="text-light">Active accounts</p>
                 </div>
             </div>
             <div class="col-md-3 col-3">
-                <div class="counters-item">
+                <div class="counters-item text-light">
                     <span>@Model.CountTransactions</span>
-                    <p>Transactions made</p>
+                    <p class="text-light">Transactions made</p>
                 </div>
             </div>
             <div class="col-md-3 col-3">
-                <div class="counters-item kill-border">
-                    <span>10B</span>
-                    <p>Total balance amount</p>
+                <div class="counters-item kill-border text-light">
+                    <span>@Model.TotalBalance £</span>
+                    <p class="text-light">Total balance amount</p>
                 </div>
             </div>
         </div>

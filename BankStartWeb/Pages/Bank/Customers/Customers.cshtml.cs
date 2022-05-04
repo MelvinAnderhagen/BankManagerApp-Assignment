@@ -45,7 +45,8 @@ namespace BankStartWeb.Pages.Bank.Customers
             {
                 sort = sort.Where(x => x.Givenname.ToLower().Contains(searchString) 
                 || x.Surname.ToLower().Contains(searchString)
-                || x.Streetaddress.ToLower().Contains(searchString));
+                || x.Streetaddress.ToLower().Contains(searchString)
+                || x.City.ToLower().Contains(searchString));
             }
 
             if (col == "givenname")

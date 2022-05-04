@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace BankStartWeb.Pages
 {
@@ -13,6 +14,13 @@ namespace BankStartWeb.Pages
         public int CountCustomers { get; set; }
         public int CountAccounts { get; set; }
         public int CountTransactions { get; set; }
+        public List<AccountViewModel> Accounts { get; set; }
+        public decimal TotalBalance { get; set; } = 0;
+        public string Prefix { get; set; }
+        public class AccountViewModel
+        {
+            public decimal Balance { get; set; }
+        }
 
         public IndexModel(ILogger<IndexModel> logger, ApplicationDbContext context)
         {
@@ -28,11 +36,26 @@ namespace BankStartWeb.Pages
 
             var transactions = _context.Transactions.Count();
 
+            Accounts = _context.Accounts.Select(x => new AccountViewModel
+            {
+                Balance = x.Balance
+            }).ToList();
 
+            foreach (var item in Accounts)
+            {
+                TotalBalance += item.Balance;
+            }
+
+            if (TotalBalance >= 1000000)
+            {
+                
+            }
 
             CountTransactions = transactions;
             CountAccounts = accounts;
             CountCustomers = customers;
+            
+
 
         }
     }
