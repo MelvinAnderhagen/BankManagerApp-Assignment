@@ -59,7 +59,7 @@ namespace BankStartWeb.Pages.Bank.Transactions
                 Transactions = account.Transactions;
 
 
-            }
+        }
 
             public IActionResult OnGetFetchMore(int accountId, int pageNo)
             {

@@ -14,21 +14,7 @@
         <th>Balance</th>
     </tr>
     </thead>
-
-
-   @* @foreach(var item in @Model.Transactions)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Type</td>
-            <td>@item.Operation</td>
-            <td>@item.Date</td>
-            <td>@item.Amount</td>
-            <td>@item.NewBalance</td>
-        </tr>
-    }*@
-
-
+    
     <tbody>
     </tbody>
 
@@ -72,16 +58,8 @@
                 fetchMore();
             });
 
-        //function fetchEvaluation(id, elem) {
-        //    fetch("View?handler=FetchValue&id=" + id)
-        //        .then((response) => response.json())
-        //        .then((json) => {
-        //                elem.innerHTML = json.value;
-        //            }
-        //        );
 
-        
     </script>
 
 }
-    @*<a>Go Back</a> coming soon...*@ 
+    
