@@ -106,6 +106,10 @@ a, a:focus, a:hover {
         color: #31BB9E;
     }
 
+td a i:focus,td a i:hover {
+    color: yellow;
+}
+
 .btn-main, .btn-main-sm {
     background-color: #31BB9E;
     color: #fff;

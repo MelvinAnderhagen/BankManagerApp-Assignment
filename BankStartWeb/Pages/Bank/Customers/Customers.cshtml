@@ -31,7 +31,7 @@
                 <a asp-route-searchString="@Model.SearchString" asp-route-order="asc" asp-route-col="city"><i class='bx bx-sort-down'></i></a>
                 <a asp-route-searchString="@Model.SearchString" asp-route-order="desc" asp-route-col="city"><i class='bx bx-sort-up'></i></a>
             </th>
-            <th class="col-1"></th>
+            <th class="col-1">Edit</th>
         </tr>
         </thead>
     </table>
@@ -47,7 +47,7 @@
             <td>@customer.Surname</td>
             <td>@customer.Streetaddress</td>
             <td>@customer.City</td>
-            <td><a asp-page="/Bank/Customers/EditCustomer" asp-route-customerId="@customer.Id">Edit</a></td>
+            <td><a asp-page="/Bank/Customers/EditCustomer" asp-route-customerId="@customer.Id"><i class='text-light h3 bx bx-edit'></i></a></td>
         </tr>
     }
     </tbody>
