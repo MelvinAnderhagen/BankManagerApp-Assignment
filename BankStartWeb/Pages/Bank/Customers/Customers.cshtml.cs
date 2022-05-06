@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankStartWeb.Pages.Bank.Customers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin, Cashier")]
     public class CustomersModel : PageModel
     {
         private readonly ApplicationDbContext _context;

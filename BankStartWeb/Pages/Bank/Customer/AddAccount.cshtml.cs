@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BankStartWeb.Pages.Bank.Customer
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Cashier")]
     [BindProperties]
     public class AddAccountModel : PageModel
     {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BankStartWeb.Pages.Bank.Customers
 {
-    [Authorize(Roles="Admin")]
+    [Authorize(Roles="Admin, Cashier")]
     [BindProperties]
     public class EditCustomerModel : PageModel
     {
