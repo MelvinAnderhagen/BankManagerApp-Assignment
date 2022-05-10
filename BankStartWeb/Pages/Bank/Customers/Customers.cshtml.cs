@@ -98,8 +98,8 @@ namespace BankStartWeb.Pages.Bank.Customers
                 }
             }
 
-            int toSkip = (pageno - 1) * 20;
-            sort = sort.Skip(toSkip).Take(20);
+            int toSkip = (pageno - 1) * 50;
+            sort = sort.Skip(toSkip).Take(50);
 
             customers = sort.Select(n => new CustomersViewModel
             {

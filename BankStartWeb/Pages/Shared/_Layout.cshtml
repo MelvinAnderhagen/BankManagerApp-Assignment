@@ -11,7 +11,8 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    @*<header>
+
+@*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">BankStartWeb</a>
@@ -47,7 +48,7 @@
                         <h2>Bank AB</h2>
                     </a>
                     <button class="navbar-toggler text-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="tf-ion-android-menu"></span>
+                        <span class="tf-ion-android-menu"></span>
                     </button>
                     <div class="collapse navbar-collapse text-dark" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
@@ -61,88 +62,88 @@
                                 <a class="nav-link text-dark" asp-page="/Bank/Customers/Customers">Customers</a>
                             </li>
                         </ul>
-                        
+
                     </div>
-                    <partial name="_LoginPartial" />
+                    <partial name="_LoginPartial"/>
                 </nav>
-                
+
             </div>
         </div>
     </div>
 </section>
 
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            <partial name="_ToastrNotification"/>
-            @RenderBody()
-        </main>
+<div class="container testbody">
+    <main role="main" class="pb-3">
+        <partial name="_ToastrNotification"/>
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="position-sticky mt-auto">
+    <div class="top-footer mt-auto">
+        <div class="container mt-auto">
+            <div class="row mt-auto">
+                <div class="col-sm-3 col-md-3 col-lg-3 mt-auto">
+                    <h3>INFORMATION</h3>
+                    <ul>
+                        <li><a href="#">Payment Option</a></li>
+                        <li><a href="#">Free Schedule</a></li>
+                        <li><a href="#">Getting Started</a></li>
+                    </ul>
+                </div>
+                <!-- End of .col-sm-3 -->
+
+                <div class="col-sm-3 col-md-3 col-lg-3 mt-auto">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Graphic Design</a></li>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </div>
+                <!-- End of .col-sm-3 -->
+
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a asp-page="/Bank/Customers/Customers">Customers</a></li>
+                        <li><a asp-page="/Privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- End of .col-sm-3 -->
+
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li>
+                            <a href="https://www.linkedin.com/in/melvin-anderhagen-2195131b3/">
+                                Linkedin
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/MelvinAnderhagen">
+                                Github
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of .col-sm-3 -->
+
+            </div>
+        </div> <!-- end container -->
     </div>
-
-    <footer id="footer" class="bg-one mt-auto">
-  <div class="top-footer mt-auto">
-    <div class="container mt-auto">
-      <div class="row mt-auto">
-        <div class="col-sm-3 col-md-3 col-lg-3 mt-auto">
-          <h3>INFORMATION</h3>
-          <ul>
-            <li><a href="#">Payment Option</a></li>
-            <li><a href="#">Free Schedule</a></li>
-            <li><a href="#">Getting Started</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3 mt-auto">
-          <h3>Our Services</h3>
-          <ul>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a asp-page="/Bank/Customers/Customers">Customers</a></li>
-              <li><a asp-page="/Privacy">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Follow Us</h3>
-          <ul>
-              <li>
-                  <a href="https://www.linkedin.com/in/melvin-anderhagen-2195131b3/">
-                      Linkedin
-                  </a>
-              </li>
-              <li>
-                  <a href="https://github.com/MelvinAnderhagen">
-                      Github
-                  </a>
-              </li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-      </div>
-    </div> <!-- end container -->
-  </div>
-  <div class="footer-bottom">
-    <h5>Copyright 2021. All rights reserved.</h5>
-    <h6>Backend and Some Design Developed by <a href="https://github.com/MelvinAnderhagen">Melvin Anderhagen</a></h6>
-  </div>
+    <div class="footer-bottom">
+        <h5>Copyright 2021. All rights reserved.</h5>
+        <h6>Backend and Some Design Developed by <a href="https://github.com/MelvinAnderhagen">Melvin Anderhagen</a></h6>
+    </div>
 </footer> <!-- end footer -->
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<partial name="_ValidationScriptsPartial"/>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
