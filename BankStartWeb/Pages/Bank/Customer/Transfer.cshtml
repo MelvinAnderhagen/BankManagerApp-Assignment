@@ -16,11 +16,9 @@
 
             <div class="form-group">
                 <label asp-for="ReceiverId">Account: </label>
-                <input class="form-control" asp-for="ReceiverId"/>
+                <select class="form-control" asp-for="ReceiverId" asp-items="@Model.ListOfAccounts"></select>
                 <span asp-validation-for="ReceiverId" class="field-validation-error"></span>
             </div>
-        
-            
 
             <br />
             <button type="submit" class="btn btn-light">Transfer</button>

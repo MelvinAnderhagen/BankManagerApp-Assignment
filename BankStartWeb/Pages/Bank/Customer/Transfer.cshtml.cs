@@ -3,6 +3,9 @@ using BankStartWeb.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankStartWeb.Pages.Bank.Customer
 {
@@ -17,6 +20,12 @@ namespace BankStartWeb.Pages.Bank.Customer
             _context = context;
             _accountService = accountService;
         }
+
+        public List<SelectListItem> ListOfAccounts { get; set; } = new List<SelectListItem>();
+
+        [BindProperty]
+        public int CustomerID { get; set; }
+
         [BindProperty]
         public int ReceiverId { get; set; }
         [BindProperty]
@@ -24,15 +33,38 @@ namespace BankStartWeb.Pages.Bank.Customer
         [BindProperty]
         public int AccountId { get; set; }
         public List<Account> Accounts { get; set; }
-        public void OnGet(int accountId)
+
+        
+
+        public void OnGet(int accountId, int customerId)
         {
-            Accounts = _context.Accounts.Select(a => new Account
+            var customer = _context.Customers
+                .Include(e => e.Accounts)
+                .FirstOrDefault(e => e.Id == customerId);
+
+            Accounts = customer.Accounts.Select(a => new Account
             {
                 Id = a.Id
             }).ToList();
 
+            CustomerID = customerId;
+            
             AccountId = accountId;
+            PopulateAccounts();
         }
+        public void PopulateAccounts()
+        {
+            var customer = _context.Customers
+                .Include(e => e.Accounts)
+                .FirstOrDefault(e => e.Id == CustomerID);
+
+            ListOfAccounts = customer.Accounts.Select(e => new SelectListItem
+            {
+                Text = e.AccountType + " " + e.Balance + " $",
+                Value = e.Id.ToString()
+            }).ToList();
+        }
+
         public IActionResult OnPost(int accountId)
         {
             if (ModelState.IsValid)
@@ -48,5 +80,8 @@ namespace BankStartWeb.Pages.Bank.Customer
 
             return Page();
         }
+
+        
     }
+
 }
