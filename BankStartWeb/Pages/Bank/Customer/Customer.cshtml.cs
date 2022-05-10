@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using BankStartWeb.Data;
+using Bogus.DataSets;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,6 @@ namespace BankStartWeb.Pages.Bank.Customer
         {
             public int AccountId { get; set; }
             public string AccountType { get; set; }
-            [DataType(DataType.Date)]
             public DateTime Created { get; set; }
             public decimal Balance { get; set; }
         }

@@ -62,7 +62,7 @@ namespace BankStartWeb.Pages.Bank.Customer
                 account.Balance = Balance;
                 account.Created = Created;
                 _context.SaveChanges();
-
+                TempData["success"] = "Account updated successfully!";
                 return RedirectToPage("/Bank/Customer/Customer", new {customerId = CustomerId});
             }
 

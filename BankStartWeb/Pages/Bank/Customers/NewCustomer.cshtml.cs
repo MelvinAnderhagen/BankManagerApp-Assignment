@@ -32,7 +32,7 @@ namespace BankStartWeb.Pages.Bank.Customers
         [Required]
         public string Telephone { get; set; }
         [Required] 
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Wrong format. Please input an email address ex. john.krasinski@mail.se")]
         public string EmailAddress { get; set; }
         [Required] 
         public int TelephoneConutryCode { get; set; }
@@ -89,6 +89,7 @@ namespace BankStartWeb.Pages.Bank.Customers
                 customer.Birthday = BirthDay;
                 _context.Customers.Add(customer);
                 _context.SaveChanges();
+                TempData["success"] = "Customer created successfully!";
                 return RedirectToPage("/Bank/Customers/Customers");
             }
 

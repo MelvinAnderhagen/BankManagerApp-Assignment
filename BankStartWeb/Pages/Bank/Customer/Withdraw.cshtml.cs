@@ -42,6 +42,7 @@ namespace BankStartWeb.Pages.Bank.Customer
 
                 if (status == IAccountService.ErrorCode.ok)
                 {
+                    TempData["success"] = "Transaction went successful!";
                     return RedirectToPage("/Bank/Transactions/Transactions", new {accountId = AccountId});
                 }
             }

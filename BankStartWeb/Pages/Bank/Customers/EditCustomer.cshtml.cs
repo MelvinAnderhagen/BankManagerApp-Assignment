@@ -100,7 +100,7 @@ namespace BankStartWeb.Pages.Bank.Customers
                 customer.Telephone = Telephone;
                 customer.TelephoneCountryCode = TelephoneConutryCode;
                 _context.SaveChanges();
-
+                TempData["success"] = "Customer updated successfully!";
                 return RedirectToPage("/Bank/Customers/Customers");
             }
 

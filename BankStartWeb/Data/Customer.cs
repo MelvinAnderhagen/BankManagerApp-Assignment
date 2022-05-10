@@ -18,6 +18,7 @@ public class Customer
     public string Telephone { get; set; }
     [MaxLength(50)]
     public string EmailAddress { get; set; }
+    [DataType(DataType.Date)]
     public DateTime Birthday { get; set; }
 
     //public string Fullname { get; set; }

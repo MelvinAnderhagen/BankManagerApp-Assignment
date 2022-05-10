@@ -63,7 +63,7 @@ namespace BankStartWeb.Pages.Bank.Customer
                 account.Created = Created;
                 customer.Accounts.Add(account);
                 _context.SaveChanges();
-
+                TempData["success"] = "Account created successfully!";
                 return RedirectToPage("/Bank/Customer/Customer", new {customerId = CustomerId});
             }
 
